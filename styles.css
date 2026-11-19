@@ -1,0 +1,291 @@
+/* reseteo general */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: #111827;
+    color: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.contenedor-quiz {
+    width: 100%;
+    max-width: 620px;
+}
+
+/* clase auxiliar pa esconder y mostrar las 3 pantallas */
+.oculto {
+    display: none !important;
+}
+
+/* estilo base de la tarjeta blanca/oscura */
+.tarjeta-principal {
+    background-color: #1f2937;
+    border: 1.5px solid #374151;
+    border-radius: 18px;
+    padding: 32px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+.etiqueta-categoria {
+    display: inline-block;
+    background-color: rgba(245, 158, 11, 0.15);
+    color: #fbbf24;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.titulo-principal {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.descripcion-quiz {
+    color: #d1d5db;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.lista-reglas {
+    background-color: #111827;
+    border-radius: 12px;
+    padding: 16px 20px 16px 36px;
+    margin-bottom: 26px;
+    color: #9ca3af;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.92rem;
+}
+
+/* boton principal en color ambar/dorado pa resaltar */
+.boton-primario {
+    width: 100%;
+    padding: 14px 24px;
+    background-color: #f59e0b;
+    color: #111827;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.boton-primario:hover {
+    background-color: #d97706;
+}
+
+.boton-primario:active {
+    transform: scale(0.98);
+}
+
+/* barra superior dentro del juego */
+.cabecera-juego {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 0.92rem;
+    font-weight: 600;
+}
+
+.dato-superior {
+    color: #9ca3af;
+}
+
+.reloj-pregunta {
+    background-color: #111827;
+    border: 1px solid #4b5563;
+    padding: 5px 14px;
+    border-radius: 20px;
+    color: #fbbf24;
+    font-variant-numeric: tabular-nums;
+}
+
+/* se pone rojo cuando quedan menos de 10 segundos */
+.reloj-pregunta.urgente {
+    border-color: #ef4444;
+    color: #f87171;
+    animation: parpadeo 0.8s infinite alternate;
+}
+
+@keyframes parpadeo {
+    from { opacity: 1; }
+    to { opacity: 0.5; }
+}
+
+.barra-progreso-fondo {
+    width: 100%;
+    height: 6px;
+    background-color: #374151;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.barra-progreso-relleno {
+    height: 100%;
+    width: 0%;
+    background-color: #f59e0b;
+    transition: width 0.3s ease;
+}
+
+.enunciado-pregunta {
+    font-size: 1.25rem;
+    line-height: 1.45;
+    margin-bottom: 22px;
+    color: #f9fafb;
+}
+
+/* botones de las opciones de respuesta */
+.lista-opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.boton-opcion {
+    width: 100%;
+    text-align: left;
+    padding: 15px 18px;
+    background-color: #111827;
+    color: #e5e7eb;
+    border: 1.5px solid #374151;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.boton-opcion:hover:not(:disabled) {
+    border-color: #f59e0b;
+    background-color: #1e293b;
+}
+
+.boton-opcion:disabled {
+    cursor: default;
+}
+
+/* colores de retroalimentacion obligatorios segun el pdf (verde y rojo) */
+.boton-opcion.correcta {
+    background-color: rgba(16, 185, 129, 0.2);
+    border-color: #10b981;
+    color: #6ee7b7;
+    font-weight: 600;
+}
+
+.boton-opcion.incorrecta {
+    background-color: rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+    color: #fca5a5;
+}
+
+.texto-feedback {
+    margin-top: 18px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background-color: #111827;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    border-left: 4px solid #f59e0b;
+}
+
+.pie-tarjeta {
+    margin-top: 22px;
+}
+
+/* estilos de la pantalla de resultados finales */
+.caja-puntaje-final {
+    background-color: #111827;
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+    margin: 18px 0 24px;
+}
+
+.texto-puntaje-label {
+    color: #9ca3af;
+    font-size: 0.95rem;
+}
+
+.numero-gigante {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #fbbf24;
+    margin: 6px 0;
+}
+
+.comentario-final {
+    color: #d1d5db;
+    font-size: 0.95rem;
+}
+
+.subtitulo-resumen {
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+    color: #e5e7eb;
+}
+
+.contenedor-resumen {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 280px;
+    overflow-y: auto;
+    margin-bottom: 24px;
+    padding-right: 4px;
+}
+
+.item-resumen {
+    background-color: #111827;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border-left: 4px solid #6b7280;
+    font-size: 0.9rem;
+}
+
+.item-resumen.acierto {
+    border-left-color: #10b981;
+}
+
+.item-resumen.fallo {
+    border-left-color: #ef4444;
+}
+
+.item-resumen p {
+    margin-bottom: 4px;
+}
+
+.detalle-respuesta {
+    color: #9ca3af;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 480px) {
+    .tarjeta-principal {
+        padding: 22px 18px;
+    }
+
+    .titulo-principal {
+        font-size: 1.45rem;
+    }
+}

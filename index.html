@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Aplicación de Quiz </title>
+    <meta name="author" content="Andres Felipe Estepa">
+    <meta name="description" content="Aplicación de Quiz ">
+    <meta property="og:title" content=" Aplicación de Quiz Andres Felipe Estepa">
+    <meta property="og:url" content="https://andresfelipe634.github.io/proyecto__22__/">
+    <link rel="icon" href="icono.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <main class="contenedor-quiz">
+
+        <!-- VISTA 1: pantalla de bienvenida con detalles y boton iniciar -->
+        <section id="pantalla-inicio" class="tarjeta-principal">
+            <span class="etiqueta-categoria">Evaluación Técnica</span>
+            <h1 class="titulo-principal">Desafío de Desarrollo Web</h1>
+            <p class="descripcion-quiz">
+                Pon a prueba tus conocimientos en HTML, CSS, JavaScript y bases de datos. 
+                Tienes <strong>60 segundos</strong> por pregunta; si se acaba el tiempo, saltará a la siguiente y perderás 1 punto.
+            </p>
+            
+            <ul class="lista-reglas">
+                <li><strong>Total de preguntas:</strong> 6 preguntas de opción múltiple</li>
+                <li><strong>Acierto:</strong> +1 punto con retroalimentación inmediata</li>
+                <li><strong>Tiempo agotado:</strong> -1 punto y avance automático</li>
+            </ul>
+
+            <button type="button" id="boton-iniciar" class="boton-primario">
+                Comenzar Quiz
+            </button>
+        </section>
+
+        <!-- VISTA 2: tarjeta donde salen las preguntas una por una (arranca oculta) -->
+        <section id="pantalla-pregunta" class="tarjeta-principal oculto">
+            
+            <!-- barra superior con progreso, reloj de 60s y puntaje actual -->
+            <header class="cabecera-juego">
+                <span id="indicador-progreso" class="dato-superior">Pregunta 1 de 6</span>
+                <div id="caja-temporizador" class="reloj-pregunta" aria-live="polite">
+                    ⏱ <span id="segundos-restantes">60</span>s
+                </div>
+                <span id="indicador-puntaje" class="dato-superior">Puntos: 0</span>
+            </header>
+
+            <!-- barra visual de progreso -->
+            <div class="barra-progreso-fondo">
+                <div id="barra-progreso-relleno" class="barra-progreso-relleno"></div>
+            </div>
+
+            <!-- enunciado de la pregunta actual -->
+            <h2 id="texto-pregunta" class="enunciado-pregunta">
+                Aquí va el texto de la pregunta...
+            </h2>
+
+            <!-- contenedor donde js mete los 4 botones de respuesta -->
+            <div id="contenedor-opciones" class="lista-opciones"></div>
+
+            <!-- mensaje de explicacion que sale despues de responder -->
+            <p id="mensaje-retroalimentacion" class="texto-feedback oculto"></p>
+
+            <!-- boton pa pasar a la siguiente pregunta (solo aparece cuando ya respondio) -->
+            <div class="pie-tarjeta">
+                <button type="button" id="boton-siguiente" class="boton-primario oculto">
+                    Siguiente Pregunta
+                </button>
+            </div>
+        </section>
+
+        <!-- VISTA 3: resumen final con nota y detalle de cada pregunta (arranca oculta) -->
+        <section id="pantalla-resultados" class="tarjeta-principal oculto">
+            <span class="etiqueta-categoria">Quiz Finalizado</span>
+            <h2 class="titulo-principal">Resumen de Resultados</h2>
+            
+            <div class="caja-puntaje-final">
+                <p class="texto-puntaje-label">Tu puntuación total es:</p>
+                <p id="puntaje-final-numero" class="numero-gigante">0 / 6</p>
+                <p id="mensaje-desempeno" class="comentario-final"></p>
+            </div>
+
+            <h3 class="subtitulo-resumen">Detalle de tus respuestas:</h3>
+            <!-- lista donde se pintan todas las preguntas con lo que contesto el usuario -->
+            <div id="lista-resumen-respuestas" class="contenedor-resumen"></div>
+
+            <button type="button" id="boton-reiniciar" class="boton-primario">
+                Intentar de Nuevo
+            </button>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
